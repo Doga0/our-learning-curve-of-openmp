@@ -1,7 +1,7 @@
 
 ## Kurulumlar
 
-> sudo apt-get install gcc make perl
+> sudo apt-get install gcc make perl  
 > sudo apt-get install libopenmpi-dev openmpi-bin libomp-dev
 
 ## Çekirdek bilgilerini görmek için:
