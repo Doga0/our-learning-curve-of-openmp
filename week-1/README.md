@@ -18,5 +18,5 @@
 
 ## Daha fazla çekirdekte çalıştrma
 
-> pico machine_file.txt
+> pico machine_file.txt   
 > mpirun -np <çekirdek_sayısı> --machinefile machine_file.txt <output_dosyası>
