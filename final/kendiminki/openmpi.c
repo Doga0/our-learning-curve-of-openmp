@@ -27,11 +27,13 @@ int main(int argc, char** argv) {
     if (rank == 0) {
         printf("Enter the elements of vector1: ");
         for (int i = 0; i < VECTOR_SIZE; i++) {
+	    fflush(stdout);
             scanf("%d", &vector1[i]);
         }
         
         printf("Enter the elements of vector2: ");
         for (int i = 0; i < VECTOR_SIZE; i++) {
+	    fflush(stdout);
             scanf("%d", &vector2[i]);
         }
     }
