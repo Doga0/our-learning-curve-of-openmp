@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 #define VECTOR_SIZE 3
 
@@ -25,10 +26,13 @@ int main() {
     for (int i = 0; i < VECTOR_SIZE; i++) {
         scanf("%d", &vector2[i]);
     }
-    
+    clock_t t;
+    t = clock();
     int result = dotProduct(vector1, vector2);
-    
+    t = clock() - t;
+    double time_taken = ((double)t)/CLOCKS_PER_SEC; 
     printf("Dot product: %d\n", result);
-    
+    printf("took %.10f seconds to execute \n", time_taken);
+
     return 0;
 }

@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     int vector2[VECTOR_SIZE];
     int localDotProduct = 0;
     int globalDotProduct = 0;
-    
+    double start_time , end_time;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
             scanf("%d", &vector2[i]);
         }
     }
-    
+    start_time = MPI_Wtime();
     MPI_Bcast(vector1, VECTOR_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(vector2, VECTOR_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
     
@@ -47,9 +47,10 @@ int main(int argc, char** argv) {
     localDotProduct = dotProduct(vector1, vector2, localStart, localEnd);
     
     MPI_Reduce(&localDotProduct, &globalDotProduct, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-    
+    end_time = MPI_Wtime();
     if (rank == 0) {
         printf("Dot product: %d\n", globalDotProduct);
+	printf("time taken:%.10f seconds\n" , end_time - start_time);
     }
     
     MPI_Finalize();
